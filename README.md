@@ -14,4 +14,4 @@ npm start
 
 [codesandbox example](https://codesandbox.io/s/react-tabs-on-render-props-qu3bi)
 
-![screenshot]()
+![screenshot](https://github.com/Skolozub/react-tabs/blob/master/screenshot.jpg)
