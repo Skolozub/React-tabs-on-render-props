@@ -13,25 +13,49 @@ const tabsList = [
 ];
 
 export const App = () => (
-  <TabsContainer location={history.location} activeTabKey="all" withparams>
-    {props => (
-      <Tabs>
-        <Tabs.Header>
-          {tabsList.map(([key, title]) => (
-            <Tabs.Tab key={key} tabKey={key} {...props}>
-              {title}
-            </Tabs.Tab>
-          ))}
-        </Tabs.Header>
-        <Tabs.Body>
-          {tabsList.map(([key, _, Component]) => (
-            <Tabs.Content key={key} tabKey={key} {...props}>
-              {Component}
-            </Tabs.Content>
-          ))}
-        </Tabs.Body>
-        {console.log(props)}
-      </Tabs>
-    )}
-  </TabsContainer>
+  <>
+    {/* with change location */}
+    <TabsContainer location={history.location} activeTabKey="all" withparams>
+      {props => (
+        <Tabs>
+          <Tabs.Header>
+            {tabsList.map(([key, title]) => (
+              <Tabs.Tab key={key} tabKey={key} {...props}>
+                {title}
+              </Tabs.Tab>
+            ))}
+          </Tabs.Header>
+          <Tabs.Body>
+            {tabsList.map(([key, _, Component]) => (
+              <Tabs.Content key={key} tabKey={key} {...props}>
+                {Component}
+              </Tabs.Content>
+            ))}
+          </Tabs.Body>
+        </Tabs>
+      )}
+    </TabsContainer>
+
+    {/* without change location */}
+    <TabsContainer activeTabKey="all">
+      {props => (
+        <Tabs>
+          <Tabs.Header>
+            {tabsList.map(([key, title]) => (
+              <Tabs.Tab key={key} tabKey={key} {...props}>
+                {title}
+              </Tabs.Tab>
+            ))}
+          </Tabs.Header>
+          <Tabs.Body>
+            {tabsList.map(([key, _, Component]) => (
+              <Tabs.Content key={key} tabKey={key} {...props}>
+                {Component}
+              </Tabs.Content>
+            ))}
+          </Tabs.Body>
+        </Tabs>
+      )}
+    </TabsContainer>
+  </>
 );

@@ -25,8 +25,6 @@ export const Tab = ({
     ...(withparams ? { as: Link, to } : { onClick })
   };
 
-  console.log("tabsProps", tabsProps);
-
   return <StyledTab {...tabsProps}>{children}</StyledTab>;
 };
 
