@@ -5,28 +5,35 @@ import { TabsContainer } from "./containers/tabs-container";
 import { Tabs } from "./components/tabs";
 import { history } from ".";
 
-const tabsList = [
+const tabsListExample1 = [
   ["all", "Все", <LoremIpsum p={3} />],
   ["categories", "Категории", <LoremIpsum p={3} />],
   ["my", "Мои", <LoremIpsum p={3} />],
   ["edit-mode", "Режим редактирования", <LoremIpsum p={3} />]
 ];
 
+const tabsListExample2 = [
+  ["0", "Все", <LoremIpsum p={3} />],
+  ["1", "Категории", <LoremIpsum p={3} />],
+  ["2", "Мои", <LoremIpsum p={3} />],
+  ["3", "Режим редактирования", <LoremIpsum p={3} />]
+];
+
 export const App = () => (
   <>
     {/* with change location */}
-    <TabsContainer location={history.location} activeTabKey="all" withparams>
+    <TabsContainer location={history.location} activeTabKey="my" withparams>
       {props => (
         <Tabs>
           <Tabs.Header>
-            {tabsList.map(([key, title]) => (
+            {tabsListExample1.map(([key, title]) => (
               <Tabs.Tab key={key} tabKey={key} {...props}>
                 {title}
               </Tabs.Tab>
             ))}
           </Tabs.Header>
           <Tabs.Body>
-            {tabsList.map(([key, _, Component]) => (
+            {tabsListExample1.map(([key, _, Component]) => (
               <Tabs.Content key={key} tabKey={key} {...props}>
                 {Component}
               </Tabs.Content>
@@ -37,18 +44,18 @@ export const App = () => (
     </TabsContainer>
 
     {/* without change location */}
-    <TabsContainer activeTabKey="all">
+    <TabsContainer>
       {props => (
         <Tabs>
           <Tabs.Header>
-            {tabsList.map(([key, title]) => (
+            {tabsListExample2.map(([key, title]) => (
               <Tabs.Tab key={key} tabKey={key} {...props}>
                 {title}
               </Tabs.Tab>
             ))}
           </Tabs.Header>
           <Tabs.Body>
-            {tabsList.map(([key, _, Component]) => (
+            {tabsListExample2.map(([key, _, Component]) => (
               <Tabs.Content key={key} tabKey={key} {...props}>
                 {Component}
               </Tabs.Content>
