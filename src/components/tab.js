@@ -8,24 +8,25 @@ export const Tab = ({
   params,
   location,
   withparams,
+  tabsName,
   setTab,
   className,
   children
 }) => {
-  const isActive = params.tab === String(tabKey);
+  const isActive = params[tabsName] === String(tabKey);
   const to = `${location.pathname}${encodeGetParams({
     ...params,
     tab: tabKey
   })}`;
   const onClick = () => setTab(tabKey);
 
-  const tabsProps = {
+  const tabProps = {
     className,
     isActive,
     ...(withparams ? { as: Link, to } : { onClick })
   };
 
-  return <StyledTab {...tabsProps}>{children}</StyledTab>;
+  return <StyledTab {...tabProps}>{children}</StyledTab>;
 };
 
 const StyledTab = styled.div`

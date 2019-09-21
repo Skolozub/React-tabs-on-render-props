@@ -1,17 +1,18 @@
 import { Component } from "react";
-import { decodeGetParams } from "../functions";
+import { decodeGetParams, encodeGetParams } from "../functions";
 
 export class TabsContainer extends Component {
   state = {
-    params: {
-      tab: "0"
-    }
+    params: {}
   };
 
-  setTab = tabKey =>
+  setTab = tabKey => {
+    const { tabsName = "tab" } = this.props;
+
     this.setState(({ params: prevParams }) => ({
-      params: { ...prevParams, tab: String(tabKey) }
+      params: { ...prevParams, [tabsName]: String(tabKey) }
     }));
+  };
 
   setParams = search => {
     const params = decodeGetParams(search);
@@ -38,11 +39,19 @@ export class TabsContainer extends Component {
 
   render = () => {
     const { params } = this.state;
-    const { location = {}, withparams } = this.props;
-
-    return this.props.children({
-      params,
+    const {
+      children,
+      location = {},
       withparams,
+      tabsName = "tab"
+    } = this.props;
+    const encodedSearch = encodeGetParams(params);
+
+    return children({
+      params,
+      search: encodedSearch,
+      withparams,
+      tabsName,
       location,
       setTab: this.setTab
     });
