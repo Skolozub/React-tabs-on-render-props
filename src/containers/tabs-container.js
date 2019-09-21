@@ -16,6 +16,7 @@ export class TabsContainer extends Component {
 
   setParams = search => {
     const params = decodeGetParams(search);
+
     this.setState(({ params: prevParams }) => ({
       params: { ...prevParams, ...params }
     }));

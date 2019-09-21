@@ -3,6 +3,7 @@ import React from "react";
 export const List = ({ list, isLoading }) => {
   if (isLoading) return <>Wait... Content is loading</>;
   if (list.length < 1) return <>Empty data...</>;
+
   return (
     <ul>
       {list.map(item => (
