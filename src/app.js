@@ -1,6 +1,5 @@
 import React from "react";
 import { LoremIpsum } from "react-lorem-ipsum";
-
 import { TabsContainer } from "./containers/tabs-container";
 import { Tabs } from "./components/tabs";
 import { history } from ".";

@@ -16,7 +16,7 @@ export const Tab = ({
   const isActive = params[tabsName] === String(tabKey);
   const to = `${location.pathname}${encodeGetParams({
     ...params,
-    tab: tabKey
+    [tabsName]: tabKey
   })}`;
   const onClick = () => setTab(tabKey);
 

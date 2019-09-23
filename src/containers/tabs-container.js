@@ -1,5 +1,5 @@
 import { Component } from "react";
-import { decodeGetParams, encodeGetParams } from "../functions";
+import { decodeGetParams } from "../functions";
 
 export class TabsContainer extends Component {
   state = {
@@ -43,17 +43,15 @@ export class TabsContainer extends Component {
     const {
       children,
       location = {},
-      withparams,
-      tabsName = "tab"
+      tabsName = "tab",
+      withparams
     } = this.props;
-    const encodedSearch = encodeGetParams(params);
 
     return children({
-      params,
-      search: encodedSearch,
-      withparams,
-      tabsName,
       location,
+      params,
+      tabsName,
+      withparams,
       setTab: this.setTab
     });
   };

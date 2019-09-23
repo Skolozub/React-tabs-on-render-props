@@ -11,12 +11,12 @@ export class ListContainer extends Component {
   componentDidMount = async () => {
     this.setState({ isLoading: true });
 
-    const { data } = await this.fetchList(this.props.search);
+    const { data } = await this.fetchList(this.props.params);
 
     this.setState({ list: data.results, isLoading: false });
   };
 
-  fetchList = async search => axios.get(`/people${search}`);
+  fetchList = async params => axios.get("/people", { params });
 
   render = () => (
     <List list={this.state.list} isLoading={this.state.isLoading} />
